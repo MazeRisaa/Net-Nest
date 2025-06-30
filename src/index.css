@@ -1,0 +1,121 @@
+/* Background gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body,
+#root {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(270deg, #090909, #1a1a2e, #0f2027, #090909);
+  background-size: 800% 800%;
+  animation: gradientShift 30s ease infinite;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #a0aec0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glowing circles */
+.background-circles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  overflow: visible;
+}
+
+.background-circles span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.6;
+  animation: floatAround 40s linear infinite;
+}
+
+.background-circles span:nth-child(1) {
+  width: 250px;
+  height: 250px;
+  background: #4c51bf;
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.background-circles span:nth-child(2) {
+  width: 350px;
+  height: 350px;
+  background: #6b46c1;
+  top: 40%;
+  left: 75%;
+  animation-delay: 10s;
+}
+
+.background-circles span:nth-child(3) {
+  width: 200px;
+  height: 200px;
+  background: #9f7aea;
+  top: 70%;
+  left: 40%;
+  animation-delay: 20s;
+}
+
+@keyframes floatAround {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, 15px) scale(1.1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Neon glow shadow helper */
+.shadow-glow {
+  box-shadow: 0 0 10px #6b46c1, 0 0 20px #6b46c1;
+  transition: box-shadow 0.3s ease;
+}
+.shadow-glow:hover {
+  box-shadow: 0 0 20px #9f7aea, 0 0 30px #9f7aea;
+}
+
+/* Colorful gradient buttons */
+.colorful-btn {
+  background: linear-gradient(45deg, #ff6a00, #ee0979, #ff6a00);
+  background-size: 200% 200%;
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 12px 24px;
+  transition: background-position 0.5s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 106, 0, 0.6);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+.colorful-btn:hover {
+  background-position: 100% 0;
+  box-shadow: 0 6px 20px rgba(238, 9, 121, 0.8);
+}
+.colorful-btn:disabled {
+  background: #444;
+  box-shadow: none;
+  cursor: not-allowed;
+  color: #aaa;
+}
